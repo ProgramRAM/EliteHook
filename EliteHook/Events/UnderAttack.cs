@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using EliteAPI.Events;
 using Discord;
 using EliteAPI;
 
@@ -16,9 +16,9 @@ namespace EliteHook.Events
 
             embed.WithAuthor("Is under attack");
             embed.WithTitle("Combat information");
-            embed.WithDescription($"Near {Program.EliteAPI.lastBody.Type.ToLower().Replace("planetaryring", "the rings of").Replace(Program.EliteAPI.lastSystem.Name.ToLower(), "")} {Program.EliteAPI.lastBody.Name.Replace("Ring", "")} in {Program.EliteAPI.lastSystem.Name}");
+            embed.WithDescription($"Near {Main.EliteAPI.Location.BodyType.ToLower().Replace("planetaryring", "the rings of").Replace(Main.EliteAPI.Location.Station.ToLower(), "")} {Main.EliteAPI.Location.Body.Replace("Ring", "")} in {Main.EliteAPI.Location.Station}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

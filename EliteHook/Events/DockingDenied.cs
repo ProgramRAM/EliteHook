@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using EliteAPI;
+﻿using Discord;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -18,7 +14,7 @@ namespace EliteHook.Events
             embed.WithTitle($"Not allowed to dock at {e.StationName}");
             embed.WithDescription($"Reason: {e.Reason}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

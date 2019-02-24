@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using EliteAPI;
+﻿using Discord;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -19,10 +15,10 @@ namespace EliteHook.Events
             embed.WithDescription($"Total: {string.Format("{0:n0}", e.TotalReward)} CR");
             foreach (var item in e.Rewards)
             {
-                embed.AddField(item.Faction, $"{string.Format("{0:n0}", item.Reward)} CR", true);
+                embed.AddField(item.Faction, $"{string.Format("{0:n0}", item.RewardReward)} CR", true);
             }
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Discord;
-using EliteAPI;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -17,9 +15,9 @@ namespace EliteHook.Events
             embed.WithTitle("Crime information");
             embed.WithDescription($"Type: {e.CrimeType}" + Environment.NewLine +
                 $"Faction: {e.Faction}" + Environment.NewLine +
-                $"Fine: {string.Format("{0:n0}", e.Fine)} CR");
+                $"Fine: {string.Format("{0:n0}", e.Bounty)} CR");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

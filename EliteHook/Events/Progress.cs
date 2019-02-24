@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using EliteAPI.Events;
 using Discord;
 using EliteAPI;
 
@@ -16,16 +16,16 @@ namespace EliteHook.Events
 
             embed.WithAuthor("Loading up the game");
             embed.WithTitle("Ranks information");
-            embed.AddField("Combat", $"{Combat(Program.rankCombat)} ({e.Combat}%)", true);
-            embed.AddField("Trade", $"{Combat(Program.rankTrade)} ({e.Trade}%)", true);
-            embed.AddField("Exploration", $"{Exploration(Program.rankExploration)} ({e.Explore}%)", true);
-            embed.AddField("Empire", $"{Empire(Program.rankEmpire)} ({e.Empire}%)", true);
-            embed.AddField("Federation", $"{Federation(Program.rankFederation)} ({e.Federation}%)", true);
+            embed.AddField("Combat", $"{Combat(Main.EliteAPI.Commander.CombatRank)} ({e.Combat}%)", true);
+            embed.AddField("Trade", $"{Combat(Main.EliteAPI.Commander.TradeRank)} ({e.Trade}%)", true);
+            embed.AddField("Exploration", $"{Exploration(Main.EliteAPI.Commander.ExplorationRank)} ({e.Explore}%)", true);
+            embed.AddField("Empire", $"{Empire(Main.EliteAPI.Commander.EmpireRank)} ({e.Empire}%)", true);
+            embed.AddField("Federation", $"{Federation(Main.EliteAPI.Commander.FederationRank)} ({e.Federation}%)", true);
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
 
-        private static string Empire(int x)
+        private static string Empire(long x)
         {
             if(x == 0) { return "None"; }
             if(x == 1) { return "Outsider"; }
@@ -45,7 +45,7 @@ namespace EliteHook.Events
             return "";
         }
 
-        private static string Federation(int x)
+        private static string Federation(long x)
         {
             if (x == 0) { return "None"; }
             if (x == 1) { return "Recruit"; }
@@ -65,7 +65,7 @@ namespace EliteHook.Events
             return "";
         }
 
-        private static string Combat(int x)
+        private static string Combat(long x)
         {
             if (x == 0) { return "Harmless"; }
             if (x == 1) { return "Mostly Harmless"; }
@@ -79,7 +79,7 @@ namespace EliteHook.Events
             return "";
         }
 
-        private static string Trade(int x)
+        private static string Trade(long x)
         {
             if(x == 0) { return "Penniless"; }
             if(x == 1) { return "Mostly Penniless"; }
@@ -93,7 +93,7 @@ namespace EliteHook.Events
             return "";
         }
 
-        private static string Exploration(int x)
+        private static string Exploration(long x)
         {
             if (x == 0) { return "Aimless"; }
             if (x == 1) { return "Mostly Aimless"; }

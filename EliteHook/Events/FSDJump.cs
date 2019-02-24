@@ -3,6 +3,7 @@
 using EliteAPI;
 
 using Discord;
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -14,9 +15,9 @@ namespace EliteHook.Events
             embed.WithTitle($"Jumping to {e.StarSystem}");
             embed.AddField("System information",
                 $"Pledge: {e.SystemAllegiance}" + Environment.NewLine +
-                $"Politics: {e.SystemGovernment_Localised}" + Environment.NewLine +
-                $"Safety: {e.SystemSecurity_Localised}" + Environment.NewLine +
-                $"Economy: {e.SystemEconomy_Localised} and {e.SystemSecondEconomy_Localised}" + Environment.NewLine
+                $"Politics: {e.SystemGovernmentLocalised}" + Environment.NewLine +
+                $"Safety: {e.SystemSecurityLocalised}" + Environment.NewLine +
+                $"Economy: {e.SystemEconomyLocalised} and {e.SystemSecondEconomyLocalised}" + Environment.NewLine
                 //$"Faction: {Program.EliteAPI.lastSystem.SystemFaction}" + Environment.NewLine, true);
                 , true);
 
@@ -27,7 +28,7 @@ namespace EliteHook.Events
                 //Scoopable(Program.EliteAPI.lastSystem.Class) + Environment.NewLine, true);
                 , true);
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
 
         private static string Scoopable(string classChar) {

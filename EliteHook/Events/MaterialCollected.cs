@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using EliteAPI.Events;
 using Discord;
 using EliteAPI;
 
@@ -16,7 +16,7 @@ namespace EliteHook.Events
             embed.WithAuthor("Stumbled upon materials");
             embed.WithTitle($"Found {e.Count} {e.Name}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

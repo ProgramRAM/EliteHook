@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using EliteAPI;
+﻿using Discord;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -15,9 +11,9 @@ namespace EliteHook.Events
             EmbedBuilder embed = new EmbedBuilder();
             embed.WithAuthor("Collected cargo");
             embed.WithTitle("Cargo information");
-            embed.WithDescription($"Collected {Stolen(e.Stolen)} {e.Type_Localised}");
+            embed.WithDescription($"Collected {Stolen(e.Stolen)} {e.TypeLocalised}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
 
         private static string Stolen(bool stolen)

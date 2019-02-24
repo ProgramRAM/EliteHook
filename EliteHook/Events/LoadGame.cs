@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Discord;
-using EliteAPI;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -18,9 +16,9 @@ namespace EliteHook.Events
             embed.WithTitle("Game information");
             embed.WithDescription($"Mode: {e.GameMode}" + Environment.NewLine +
                 $"Credits: {string.Format("{0:n0}", e.Credits)} CR" + Environment.NewLine +
-                $"Ship: {e.Ship} '{e.ShipName}' ({e.ShipIdent}) ");
+                $"Ship: {e.Ship.Replace("Empire_Trader", "Imperial Clipper")} '{e.ShipName}' ({e.ShipIdent}) ");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

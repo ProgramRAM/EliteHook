@@ -1,6 +1,6 @@
-﻿using System;
-using Discord;
-using EliteAPI;
+﻿using Discord;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -12,9 +12,9 @@ namespace EliteHook.Events
 
             embed.WithAuthor("Dropped out to an USS");
             embed.WithTitle("USS information");
-            embed.WithDescription($"{e.USSType_Localised}, level {e.USSThreat}");
+            embed.WithDescription($"{e.UssTypeLocalised}, level {e.UssThreat}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

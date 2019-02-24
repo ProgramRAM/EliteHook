@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using EliteAPI.Events;
 using Discord;
 using EliteAPI;
 
@@ -19,10 +19,10 @@ namespace EliteHook.Events
             embed.WithDescription($"Total: {string.Format("{0:n0}", e.Amount)} CR");
             foreach (var item in e.Factions)
             {
-                embed.AddField(item.Faction, $"{string.Format("{0:n0}", item.Amount)} CR", true);
+                embed.AddField(item.Name, $"{string.Format("{0:n0}", item.Amount)} CR", true);
             }
                 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

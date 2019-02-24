@@ -1,6 +1,8 @@
 ﻿using System;
+
 using Discord;
-using EliteAPI;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -11,10 +13,10 @@ namespace EliteHook.Events
             EmbedBuilder embed = new EmbedBuilder();
             embed.WithAuthor("About to dock");
             embed.WithTitle($"Allowed docking at {e.StationName}");
-            embed.WithDescription($"In {Program.EliteAPI.lastStation.System}" + Environment.NewLine +
+            embed.WithDescription($"In {Main.EliteAPI.Location.StarSystem}" + Environment.NewLine +
                 $"Landing pad {e.LandingPad}");
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Discord;
 
 using EliteAPI;
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -16,7 +17,7 @@ namespace EliteHook.Events
                 embed.WithDescription(e.Message.Substring(2));
 
                 
-                Program.Send(embed);
+                Main.Send(embed);
             }
         }
     }

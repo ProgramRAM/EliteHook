@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord;
-using EliteAPI;
+﻿using Discord;
+
+using EliteAPI.Events;
 
 namespace EliteHook.Events
 {
@@ -16,7 +12,7 @@ namespace EliteHook.Events
             if (e.Success) { embed.WithTitle($"Interdicted {e.Interdicted}"); }
             if (!e.Success) { embed.WithTitle($"Attempted to interdict {e.Interdicted}"); }
 
-            Program.Send(embed);
+            Main.Send(embed);
         }
     }
 }
