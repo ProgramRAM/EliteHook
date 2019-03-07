@@ -31,10 +31,10 @@ namespace EliteHook
                 EliteAPI.Logger.UseLogFile(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)));
                 ThirdPartyWrapper wrapper = new ThirdPartyWrapper(EliteAPI, "EliteHook");
                 EliteAPI.ChangeJournal(wrapper.GetJournalFolder("EliteHook.ini"));
+                if (!Directory.Exists(EliteAPI.JournalDirectory.FullName) || EliteAPI.JournalDirectory.GetFiles("Journal.*.log").Count() == 0) { SetProgress("Please set a custom Journal Path in EliteHook.ini"); Thread.Sleep(5000); Environment.Exit(-1); }
                 EliteAPI.Start();
             }
             catch(Exception ex) { SetProgress("Error: " + ex.Message); Thread.Sleep(5000); Environment.Exit(-1); }
-            if (EliteAPI.JournalDirectory.GetFiles("Journal.*.log").Count() == 0) { SetProgress("Please set a custom Journal Path in EliteHook.ini"); Thread.Sleep(5000); Environment.Exit(-1); }
             if (!EliteAPI.IsRunning) { SetProgress("Could not start EliteAPI. See log files for more information");  Thread.Sleep(5000); Environment.Exit(-1); }
 
             SetProgress("Loading program ...");
