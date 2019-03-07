@@ -22,6 +22,7 @@ namespace EliteHook
 
         private static bool isOn;
         private string Url { get { return txtUrl.Text; } set { txtUrl.Invoke(new Action(() => txtUrl.Text = value)); } }
+        private static bool isRichPresenceOn;
 
         public Main(EliteDangerousAPI elite)
         {
@@ -38,7 +39,7 @@ namespace EliteHook
 
         public void Ready()
         {
-            try { Url = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\webhook.txt"); } catch { }
+            try { Url = File.ReadAllText(Directory.GetCurrentDirectory() + "\\webhook.txt"); } catch { }
         }
 
         private void Shake(TextBox t)
@@ -80,7 +81,7 @@ namespace EliteHook
 
             try
             {
-                File.WriteAllText(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\webhook.txt", Url);
+                File.WriteAllText(Directory.GetCurrentDirectory() + "\\webhook.txt", Url);
             }
             catch { }
 
@@ -169,6 +170,23 @@ namespace EliteHook
 
             IEnumerable<Embed> embeds = new List<Embed>() { embed.Build() };
             webhook.SendMessageAsync("", false, embeds);
+        }
+
+        private void btnRichPresence_Click(object sender, EventArgs e)
+        {
+            isRichPresenceOn = !isRichPresenceOn;
+
+            if(isRichPresenceOn)
+            {
+                //Turn rich presence off.
+                btnRichPresence.ForeColor = System.Drawing.Color.FromArgb(128, 255, 128);
+                EliteAPI.DiscordRichPresence.TurnOn();
+            } else
+            {
+                //Turn rich presence on.
+                btnRichPresence.ForeColor = System.Drawing.Color.FromArgb(255, 80, 80);
+                EliteAPI.DiscordRichPresence.TurnOff();
+            }
         }
     }
 }

@@ -35,6 +35,7 @@
             this.btnToggle = new System.Windows.Forms.Button();
             this.txtCommander = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.btnRichPresence = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUrl
@@ -110,12 +111,26 @@
             this.txtLog.TabIndex = 7;
             this.txtLog.Text = "";
             // 
+            // btnRichPresence
+            // 
+            this.btnRichPresence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRichPresence.Font = new System.Drawing.Font("Segoe UI Semilight", 10F);
+            this.btnRichPresence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.btnRichPresence.Location = new System.Drawing.Point(295, 349);
+            this.btnRichPresence.Name = "btnRichPresence";
+            this.btnRichPresence.Size = new System.Drawing.Size(121, 30);
+            this.btnRichPresence.TabIndex = 8;
+            this.btnRichPresence.Text = "rich presence";
+            this.btnRichPresence.UseVisualStyleBackColor = true;
+            this.btnRichPresence.Click += new System.EventHandler(this.btnRichPresence_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(18)))), ((int)(((byte)(21)))));
-            this.ClientSize = new System.Drawing.Size(430, 349);
+            this.ClientSize = new System.Drawing.Size(430, 391);
+            this.Controls.Add(this.btnRichPresence);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.txtCommander);
             this.Controls.Add(this.btnToggle);
@@ -141,5 +156,6 @@
         private System.Windows.Forms.Button btnToggle;
         private System.Windows.Forms.Label txtCommander;
         private System.Windows.Forms.RichTextBox txtLog;
+        private System.Windows.Forms.Button btnRichPresence;
     }
 }
