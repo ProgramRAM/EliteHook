@@ -57,7 +57,7 @@
             this.txtProgress.Text = "EliteHook by Somfic";
             this.txtProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Main
+            // Splash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +68,8 @@
             this.Controls.Add(this.txtCredit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Main";
+            this.Name = "Splash";
+            this.Opacity = 0.85D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EliteHook";
             this.TopMost = true;
