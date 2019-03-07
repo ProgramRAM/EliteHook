@@ -28,7 +28,7 @@ namespace EliteHook
             try
             {
                 EliteAPI = new EliteDangerousAPI(EliteDangerousAPI.StandardDirectory, false);
-                EliteAPI.Logger.UseLogFile(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)));
+                EliteAPI.Logger.UseLogFile(new DirectoryInfo(Directory.GetCurrentDirectory()));
                 ThirdPartyWrapper wrapper = new ThirdPartyWrapper(EliteAPI, "EliteHook");
                 EliteAPI.ChangeJournal(wrapper.GetJournalFolder("EliteHook.ini"));
                 if (!Directory.Exists(EliteAPI.JournalDirectory.FullName) || EliteAPI.JournalDirectory.GetFiles("Journal.*.log").Count() == 0) { SetProgress("Please set a custom Journal Path in EliteHook.ini"); Thread.Sleep(5000); Environment.Exit(-1); }

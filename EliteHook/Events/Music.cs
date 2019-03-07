@@ -22,9 +22,8 @@ namespace EliteHook.Events
 
                 case "dockingcomputer":
                     EmbedBuilder embed2 = new EmbedBuilder();
-                    embed2.WithDescription("Using autopilot");
-                    embed2.WithTitle($"To dock at {Main.EliteAPI.Location.Station}");
-                    embed2.WithDescription($"In {Main.EliteAPI.Location.Station}");
+                    embed2.WithTitle("Using autopilot");
+                    embed2.WithDescription($"To dock at {Main.EliteAPI.Location.Station}\nIn {Main.EliteAPI.Location.StarSystem}");
                     Main.Send(embed2);
                     break;
             }

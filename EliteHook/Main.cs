@@ -158,6 +158,8 @@ namespace EliteHook
 
         public static void Send(EmbedBuilder embed)
         {
+            EliteAPI.Logger.LogDebug($"Sending webhook: '{Newtonsoft.Json.JsonConvert.SerializeObject(embed)}'.");
+
             embed.WithCurrentTimestamp();
             try
             {
