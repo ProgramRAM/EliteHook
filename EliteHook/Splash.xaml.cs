@@ -1,0 +1,58 @@
+﻿using EliteAPI;
+using System;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
+
+namespace EliteHook
+{
+
+
+    /// <summary>
+    /// Interaction logic for Window1.xaml
+    /// </summary>
+    public partial class Splash : Window
+    {
+        public Splash()
+        {
+            InitializeComponent();
+
+            EliteDangerousAPI api = new EliteDangerousAPI();
+            MainWindow main = new MainWindow(api);
+
+            api.OnLoad += (sender, e) => UpdateProgress(e.Item1, e.Item2);
+            api.OnError += (sender, e) => UpdateError(e.Item1);
+            api.OnReady += (sender, e) =>
+            {
+                UpdateDone();
+                main.Dispatcher.Invoke(new Action(() => main.Show()));
+                Dispatcher.Invoke(new Action(() => Hide()));
+            };
+
+            Task.Run(() => { api.Start(); });
+        }
+
+        private void UpdateDone()
+        {
+            UpdateProgress(Color.FromRgb(133, 255, 92), 1, "EliteAPI is ready");
+        }
+
+        private void UpdateError(string text)
+        {
+            UpdateProgress(Color.FromRgb(255, 92, 111), 1, text);
+        }
+
+        private void UpdateProgress(string text, float progress)
+        {
+            UpdateProgress(Color.FromRgb(255, 255, 255), progress, text);
+        }
+
+        private void UpdateProgress(Color color, float progress, string text)
+        {
+            Progress.Dispatcher.Invoke(new Action(() => Progress.Fill = new SolidColorBrush(color)));
+            ProgressDone.Dispatcher.Invoke(new Action(() => ProgressDone.Width = new GridLength(Math.Min(progress * 100, 100), GridUnitType.Star)));
+            ProgressLeft.Dispatcher.Invoke(new Action(() => ProgressLeft.Width = new GridLength(Math.Max(progress * 100 - 100, 0), GridUnitType.Star)));
+            ProgessContent.Dispatcher.Invoke(new Action(() => ProgessContent.Text = text));
+        }
+    }
+}
