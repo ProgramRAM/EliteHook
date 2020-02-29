@@ -20,14 +20,10 @@ namespace EliteHook
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
         public MainWindow(EliteDangerousAPI api)
         {
             InitializeComponent();
+            Closed += (sender, e) => Environment.Exit(0);
         }
     }
 }

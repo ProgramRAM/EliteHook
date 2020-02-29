@@ -17,6 +17,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
+        <TextBox Text="Test" TextWrapping="Wrap" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="{x:Null}" BorderBrush="{x:Null}" IsReadOnly="True" IsUndoEnabled="False" VerticalContentAlignment="Bottom" x:Name="BackgroundLogging" Foreground="#33FFFFFF"/>
         <Image Grid.Column="1" Grid.Row="0" Source="logo.png"></Image>
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,10">
             <Grid.RowDefinitions>
@@ -30,7 +31,7 @@
                 </Grid.ColumnDefinitions>
                 <Rectangle x:Name="Progress" Fill="White" RadiusX="10"></Rectangle>
             </Grid>
-            <TextBlock TextWrapping="Wrap" x:Name="ProgessContent" Grid.Row="1" Grid.ColumnSpan="3" Text="Starting ..." Foreground="White" TextAlignment="Center"></TextBlock>
+            <TextBlock TextWrapping="Wrap" x:Name="ProgessContent" Grid.Row="1" Grid.ColumnSpan="3" Text="Starting ..." Foreground="#7FFFFFFF" TextAlignment="Center" FontSize="16"></TextBlock>
         </Grid>
     </Grid>
 </Window>

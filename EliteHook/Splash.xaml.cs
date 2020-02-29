@@ -1,8 +1,10 @@
 ﻿using EliteAPI;
+using Somfic.Logging;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Threading;
 
 namespace EliteHook
 {
@@ -18,6 +20,12 @@ namespace EliteHook
             InitializeComponent();
 
             EliteDangerousAPI api = new EliteDangerousAPI();
+            api.Logger.LogEvent += (sender, e) =>
+            {
+                BackgroundLogging.Dispatcher.Invoke(new Action(() => BackgroundLogging.AppendText(e.Content + Environment.NewLine)));
+                BackgroundLogging.Dispatcher.Invoke(new Action(() => BackgroundLogging.ScrollToEnd()));
+            };
+
             MainWindow main = new MainWindow(api);
 
             api.OnLoad += (sender, e) => UpdateProgress(e.Item1, e.Item2);
@@ -25,8 +33,13 @@ namespace EliteHook
             api.OnReady += (sender, e) =>
             {
                 UpdateDone();
-                main.Dispatcher.Invoke(new Action(() => main.Show()));
-                Dispatcher.Invoke(new Action(() => Hide()));
+                Task.Run(() =>
+                {
+                    Thread.Sleep(1500);
+                    main.Dispatcher.Invoke(new Action(() => main.Show()));
+                    Dispatcher.Invoke(new Action(() => Hide()));
+                });
+                
             };
 
             Task.Run(() => { api.Start(); });
